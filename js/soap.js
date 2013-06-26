@@ -1,6 +1,5 @@
 var soapTest = (function () {
 
-    var soapMessage = '';
     var soapUrl = 'http://www.webservicex.net/globalweather.asmx';
     var soapAction = '';
 
@@ -10,7 +9,7 @@ var soapTest = (function () {
     /////////////////////////////////////////////////////////////////////
     createMessage = function () {
 
-        $(this).soapMessage = '<?xml version="1.0" encoding="utf-8"?>' +
+        soapMessage = '<?xml version="1.0" encoding="utf-8"?>' +
                    '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.webserviceX.NET">' +
                    '<soapenv:Header/>' +
                    '<soapenv:Body>' +
@@ -20,7 +19,7 @@ var soapTest = (function () {
                    '</web:GetWeather>' +
                    '</soapenv:Body>' +
                    '</soapenv:Envelope>';
-
+        return soapMessage;
     },
 
 
@@ -29,23 +28,25 @@ var soapTest = (function () {
     /////////////////////////////////////////////////////////////////////
     sendMessage = function () {
 
+        var soapMessage = '';
+
         utils.showLoading(true);
 
-        createMessage();
+        soapMessage = createMessage();
 
         $.ajax({
             type: 'POST',
-            url: $(this).soapUrl,
-            data: $(this).soapMessage,
+            url: soapUrl,
+            data: soapMessage,
             contentType: "text/xml; charset=UTF-8",
             dataType: "xml",
             cache: false,
             //async: false,
             success: function (dados, estado, jqXhr) {
 
-               var result = document.getElementById("soapResult");
-               result.innerHTML = jqXhr.responseText;
-               utils.showLoading(false);
+                var result = document.getElementById("soapResult");
+                result.innerHTML = jqXhr.responseText;
+                utils.showLoading(false);
             },
             error: function (jqXhr, estado, erro) {
                 alert(jqXhr.status);
