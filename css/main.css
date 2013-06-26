@@ -1,0 +1,16 @@
+.detailListText{
+    margin: 0 0 0 20px;
+}
+
+.checkBoxLeft{
+    position: absolute; 
+    left: 1px; 
+    top: 40%;
+}
+
+.ui-li-icon-right{
+    max-height: 40px;
+    max-width: 40px;
+    right: 10px;
+    top: .9em;
+}
