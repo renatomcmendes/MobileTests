@@ -1,11 +1,8 @@
-
-
-
 var main = (function () {
 
     var isMobile = true;    // web app ou Phonegap app (Testes)
 
-    onBodyLoad = function () {
+    onBodyLoad = function (p_arg) {
         if (isMobile) {
             document.addEventListener("deviceready", init(), false);
         }
@@ -15,12 +12,17 @@ var main = (function () {
     },
 
     init = function () {
-        alert('device ready');
+
+    },
+
+    limparResultado = function () {
+        $("#soapResult").empty();
     };
 
     // Funções Publicas
     return {
-        onBodyLoad: onBodyLoad
+        onBodyLoad: onBodyLoad,
+        limparResultado: limparResultado
     };
 
 })();

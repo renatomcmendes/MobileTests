@@ -14,17 +14,26 @@
         <script src="js/jquery.mobile-1.3.1.min.js"></script>
         <script type="text/javascript" src="js/jquery.xml2json.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/soap.js"></script>
+        
     </head>
     <body>
 
    <!-- Main Page -->
-    <div id="main" data-role="page" data-theme="d">
+    <div id="main" data-role="page" data-theme="b">
       <div data-role="header" data-theme="a">
-        <h1>Configuring Messages</h1>
+        <h1>MDM FutureView</h1>
       </div>
       <div data-role="content">
-        <a href="liberacaoPO.html" data-role="button">Liberação PO</a>
+        <a href="" data-role="button" onclick="soapTest.sendMessage();">Testar Serviço</a>
+        <a href="" data-role="button" onclick="main.limparResultado()" data-mini="true">Limpar resultado</a>
+        <!--<a href="/result.html" data-role="button" data-ajax="false">página2</a>-->
       </div>
+      <div data-role="content">
+        <p>Resultado:</p>
+        <p id="soapResult"> testes fsdfda sdf sdfdsf sdgdgsgs. fdsf sdf ds </p>
+      </div>  
+        
     </div>
 
     </body>
