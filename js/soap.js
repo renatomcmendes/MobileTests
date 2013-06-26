@@ -29,6 +29,8 @@ var soapTest = (function () {
     /////////////////////////////////////////////////////////////////////
     sendMessage = function () {
 
+        utils.showLoading(true);
+
         createMessage();
 
         $.ajax({
@@ -42,10 +44,11 @@ var soapTest = (function () {
 
                var result = document.getElementById("soapResult");
                result.innerHTML = jqXhr.responseText;
-
+               utils.showLoading(false);
             },
             error: function (jqXhr, estado, erro) {
                 alert(jqXhr.status);
+                utils.showLoading(false);
             }
         });
     };
