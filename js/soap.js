@@ -10,7 +10,7 @@ var soapTest = (function () {
     /////////////////////////////////////////////////////////////////////
     createMessage = function () {
 
-        soapMessage = '<?xml version="1.0" encoding="utf-8"?>' +
+        $(this).soapMessage = '<?xml version="1.0" encoding="utf-8"?>' +
                    '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.webserviceX.NET">' +
                    '<soapenv:Header/>' +
                    '<soapenv:Body>' +
@@ -35,10 +35,10 @@ var soapTest = (function () {
 
         $.ajax({
             type: 'POST',
-            url: soapUrl,
-            data: soapMessage,
+            url: $(this).soapUrl,
+            data: $(this).soapMessage,
             contentType: "text/xml; charset=UTF-8",
-            dataType: 'xml',
+            dataType: "xml",
             cache: false,
             //async: false,
             success: function (dados, estado, jqXhr) {
@@ -61,7 +61,7 @@ var soapTest = (function () {
 
 })();
 
-var soapSap = (function () {
+/*var soapSap = (function () {
 
     var soapMessage = '';
     var soapUrl = 'http://10.0.0.52:8000/sap/bc/soap/rfc/BAPI_PO_GETITEMSREL?sap-client=300';
@@ -129,4 +129,4 @@ var soapSap = (function () {
         createMessage: createMessage
     };
 
-})();
+})();*/
