@@ -51,8 +51,9 @@ var soapTest = (function () {
                 utils.showLoading(false);
             },
             error: function (jqXhr, estado, erro) {
-                alert(jqXhr.status);
                 utils.showLoading(false);
+                utils.parseHttpError(jqXhr.status);
+                
             }
         });
     };
