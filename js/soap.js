@@ -1,7 +1,7 @@
 var soapTest = (function () {
 
+    var soapMessage = '';
     var soapUrl = 'http://www.webservicex.net/globalweather.asmx';
-    var soapAction = '';
 
 
     /////////////////////////////////////////////////////////////////////
@@ -19,7 +19,6 @@ var soapTest = (function () {
                    '</web:GetWeather>' +
                    '</soapenv:Body>' +
                    '</soapenv:Envelope>';
-        return soapMessage;
     },
 
 
@@ -28,11 +27,10 @@ var soapTest = (function () {
     /////////////////////////////////////////////////////////////////////
     sendMessage = function () {
 
-        var soapMessage = '';
 
         utils.showLoading(true);
 
-        soapMessage = createMessage();
+        (this).createMessage();
 
         $.ajax({
             type: 'POST',
@@ -62,7 +60,7 @@ var soapTest = (function () {
 
 })();
 
-/*var soapSap = (function () {
+var soapSap = (function () {
 
     var soapMessage = '';
     var soapUrl = 'http://10.0.0.52:8000/sap/bc/soap/rfc/BAPI_PO_GETITEMSREL?sap-client=300';
@@ -99,7 +97,7 @@ var soapTest = (function () {
 
         utils.showLoading(true);
 
-        createMessage();
+        (this).createMessage();
 
         $.ajax({
             type: 'POST',
@@ -130,4 +128,4 @@ var soapTest = (function () {
         createMessage: createMessage
     };
 
-})();*/
+})();
