@@ -7,7 +7,7 @@ var soapTest = (function () {
     /////////////////////////////////////////////////////////////////////
     // Criação da mensagem xml a enviar
     /////////////////////////////////////////////////////////////////////
-    createMessage = function () {
+    var createMessage = function () {
 
         soapMessage = '<?xml version="1.0" encoding="utf-8"?>' +
                    '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.webserviceX.NET">' +
@@ -19,18 +19,18 @@ var soapTest = (function () {
                    '</web:GetWeather>' +
                    '</soapenv:Body>' +
                    '</soapenv:Envelope>';
-    },
+    };
 
 
     /////////////////////////////////////////////////////////////////////
     // Envio da Mensagem
     /////////////////////////////////////////////////////////////////////
-    sendMessage = function () {
+    var sendMessage = function () {
 
 
         utils.showLoading(true);
 
-        (this).createMessage();
+        createMessage();
 
         $.ajax({
             type: 'POST',
@@ -70,7 +70,7 @@ var soapSap = (function () {
     /////////////////////////////////////////////////////////////////////
     // Criação da mensagem xml a enviar
     /////////////////////////////////////////////////////////////////////
-    createMessage = function () {
+    var createMessage = function () {
 
         soapMessage = '<?xml version="1.0" encoding="utf-8"?>' +
                         '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" ' +
@@ -87,17 +87,17 @@ var soapSap = (function () {
                         '</soapenv:Body>' +
                         '</soapenv:Envelope>';
 
-    },
+    };
 
 
     /////////////////////////////////////////////////////////////////////
     // Envio da Mensagem
     /////////////////////////////////////////////////////////////////////
-    sendMessage = function () {
+    var sendMessage = function () {
 
         utils.showLoading(true);
 
-        (this).createMessage();
+        createMessage();
 
         $.ajax({
             type: 'POST',
@@ -111,13 +111,14 @@ var soapSap = (function () {
             cache: false,
             //async: false,
             success: function (dados, estado, jqXhr) {
-              
-               var result = document.getElementById("soapResult");
-               result.innerHTML = jqXhr.responseText;
-               utils.showLoading(false);
+
+                var result = document.getElementById("soapResult");
+                result.innerText = jqXhr.responseText;
+                utils.showLoading(false);
             },
             error: function (jqXhr, estado, erro) {
-                alert(jqXhr.status);
+                utils.parseHttpError(jqXhr.status);
+                //alert(jqXhr.status);
                 utils.showLoading(false);
             }
         });
