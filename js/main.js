@@ -1,5 +1,5 @@
 $(document).bind("pageinit", function () { alert("Evento: PageInit") });
-$(document).addEventListener("deviceready", function () { alert("Evento: Device Ready") }, false);
+document.addEventListener("deviceready", function () { alert("Evento: Device Ready") }, false);
 
 var main = (function () {
 
