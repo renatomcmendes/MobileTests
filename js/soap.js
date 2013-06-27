@@ -47,7 +47,7 @@ var soapTest = (function () {
             success: function (dados, estado, jqXhr) {
 
                 var result = document.getElementById("soapResult");
-                result.innerHTML = jqXhr.responseText;
+                result.innerText = jqXhr.responseText;
                 utils.showLoading(false);
             },
             error: function (jqXhr, estado, erro) {

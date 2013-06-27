@@ -1,18 +1,35 @@
-$(document).bind("pageinit", function () { alert("Evento: PageInit") });
-document.addEventListener("deviceready", function () { alert("Evento: Device Ready") }, false);
+$(document).bind("pageinit", function () {
 
-var main = (function () {
 
-    var isMobile = true;    // web app ou Phonegap app (Testes)
+    $('#btnSendSoap').click(function () { soapTest.sendMessage(); });
 
-    onBodyLoad = function (p_arg) {
-        if (isMobile) {
-            document.addEventListener("deviceready", init(), false);
-        }
-        else {
-            init();
-        }
-    },
+
+    document.addEventListener("deviceready", function () { onDeviceReady(); }, false);
+
+
+    function onDeviceReady() {
+        // Regista eventos relacionados com Phonegap
+        document.addEventListener("resume", onAppResume, false);
+
+    };
+
+    function onAppResume() {
+        alert("Resumo da Aplicação. Variaveis Limpas");
+    };
+
+
+    var main = (function () {
+
+        var isMobile = true;    // web app ou Phonegap app (Testes)
+
+        onBodyLoad = function (p_arg) {
+            if (isMobile) {
+                document.addEventListener("deviceready", init(), false);
+            }
+            else {
+                init();
+            }
+        },
 
     init = function () {
 
@@ -22,14 +39,16 @@ var main = (function () {
         $("#soapResult").empty();
     };
 
-    // Funções Publicas
-    return {
-        onBodyLoad: onBodyLoad,
-        limparResultado: limparResultado
-    };
+        // Funções Publicas
+        return {
+            onBodyLoad: onBodyLoad,
+            limparResultado: limparResultado
+        };
 
-})();
+    })();
 
-main.onBodyLoad();
+    main.onBodyLoad();
+
+});
 
 
